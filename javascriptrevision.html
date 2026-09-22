@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First JavaScript Program</title>
+</head>
+<body>
+
+    <h2>First JavaScript Program</h2>
+
+    <button onclick="runCode1()">Run Code</button>
+
+    <p id="result"></p>
+
+    <script>
+        function runCode1() {
+            let number1 = 10;
+            let number2 = 5;
+
+            let sum = number1 + number2;
+
+            document.getElementById("result").innerText =
+                "Sum is: " + sum;
+        }
+    </script>
+
+    <hr>
+
+    <h2>Data Type Example</h2>
+
+    <button onclick="runDatatype()">Run Data Type</button>
+
+    <p id="result2"></p>
+
+    <script>
+        function runDatatype() {
+            let age = 16;
+            let name = "Nishant";
+            let isStudent = true;
+
+            document.getElementById("result2").innerText =
+                "Age Type: " + typeof age +
+                " | Name Type: " + typeof name +
+                " | Student Type: " + typeof isStudent;
+        }
+    </script>
+ <h2>If Else Example</h2>
+   <button onclick="runCode3()">Run Code</button>
+   <p id="result3"></p>
+   <script>
+    function runCode3() {
+        let marks = 95;
+        // checking marks and deciding the grade 
+        if(marks>=90){
+            document.getElementById("result3").innerText ="Grade:A";
+
+        }
+        else if (marks>=60) {
+             document.getElementById("result3").innerText ="Grade:B";
+
+        }
+        else{
+             document.getElementById("result3").innerText ="Grade:C";
+
+        }
+      
+    }
+   </script>
+  <h2>Function Example</h2>
+        <button onclick="runCode4 ()">Run Code</button>
+        <p id="result4"></p>
+        <script>
+           function runCode4() {
+    function addNumbers(x, y) {
+        return x + y;
+    }
+
+    let sum = addNumbers(5, 7);
+
+    document.getElementById("result4").innerText =
+        "Sum is: " + sum;
+}
+        </script>
+
+        <h2>Array Example</h2>
+         <button onclick="runCode5 ()">Run Code</button>
+          <p id="result5"></p>
+<script>
+function runCode5() {
+    let students = ["Aman", "Riya", "Karan"];
+
+    let first = students[0];
+    let total = students.length;
+
+    students.push("Sneha");
+
+    document.getElementById("result5").innerText =
+        "First Student: " + first +
+        " | Total: " + total +
+        " | After Add: " + students.join(", ");
+}
+</script>
+  <h2>Second Javascript Program</h2>
+        <button onclick="runCode6()">Run Code</button>
+        <p id="result6"></p>
+<script>
+    function runCode6() {
+let student =  {
+    name:"Aman",age:"16",marks:"85"
+};
+let studentName = student.name;
+let studentAge = student["age"];
+
+ student.marks = 90;
+
+    document.getElementById("result6").innerText =
+        "Name: " + studentName +
+        " | Age: " + studentAge +
+        " | Updated Marks: " + student.marks;
+}
+
+    
+</script>
+</body>
+</html>

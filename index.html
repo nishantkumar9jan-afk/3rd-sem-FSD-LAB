@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Node.js CRUD Demo</title>
+
+<style>
+body{
+font-family:Arial;
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+button{
+padding:8px 15px;
+margin:5px;
+}
+
+pre{
+background:black;
+color:lime;
+padding:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Node.js CRUD Demo</h1>
+
+<h2>EventEmitter</h2>
+
+<input id="nameInput" value="Student">
+
+<button onclick="callGreet()">
+Greet
+</button>
+
+<button onclick="callExit()">
+Exit
+</button>
+
+<pre id="emitterOutput"></pre>
+
+<hr>
+
+<h2>Event Loop</h2>
+
+<button onclick="runEventLoop()">
+Run Event Loop
+</button>
+
+<pre id="eventLoopOutput"></pre>
+
+<hr>
+
+<h2>File CRUD</h2>
+
+<input id="fileText"
+placeholder="Enter text">
+
+<br><br>
+
+<button onclick="createFile()">
+Create
+</button>
+
+<button onclick="readFile()">
+Read
+</button>
+
+<button onclick="updateFile()">
+Update
+</button>
+
+<button onclick="deleteFile()">
+Delete
+</button>
+
+<pre id="fileOutput"></pre>
+
+<script>
+
+async function callGreet(){
+
+const name =
+document.getElementById('nameInput').value;
+
+const res =
+await fetch(`/greet?name=${name}`);
+
+const data =
+await res.json();
+
+document.getElementById(
+'emitterOutput'
+).textContent =
+JSON.stringify(data,null,2);
+
+}
+
+async function callExit(){
+
+const res =
+await fetch('/exit');
+
+const data =
+await res.json();
+
+document.getElementById(
+'emitterOutput'
+).textContent =
+JSON.stringify(data,null,2);
+
+}
+
+async function runEventLoop(){
+
+const res =
+await fetch('/eventloop');
+
+const data =
+await res.json();
+
+document.getElementById(
+'eventLoopOutput'
+).textContent =
+data.order.join('\n');
+
+}
+
+async function createFile(){
+
+const text =
+document.getElementById(
+'fileText'
+).value;
+
+const res =
+await fetch('/create',{
+method:'POST',
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify({text})
+});
+
+const data =
+await res.json();
+
+document.getElementById(
+'fileOutput'
+).textContent =
+JSON.stringify(data,null,2);
+
+}
+
+async function readFile(){
+
+const res =
+await fetch('/read');
+
+const data =
+await res.json();
+
+document.getElementById(
+'fileOutput'
+).textContent =
+JSON.stringify(data,null,2);
+
+}
+
+async function updateFile(){
+
+const text =
+document.getElementById(
+'fileText'
+).value;
+
+const res =
+await fetch('/update',{
+method:'PUT',
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify({text})
+});
+
+const data =
+await res.json();
+
+document.getElementById(
+'fileOutput'
+).textContent =
+JSON.stringify(data,null,2);
+
+}
+
+async function deleteFile(){
+
+const res =
+await fetch('/delete',{
+method:'DELETE'
+});
+
+const data =
+await res.json();
+
+document.getElementById(
+'fileOutput'
+).textContent =
+JSON.stringify(data,null,2);
+
+}
+
+</script>
+
+</body>
+</html>
