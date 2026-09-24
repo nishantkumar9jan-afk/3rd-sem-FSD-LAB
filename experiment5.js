@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
         req.on("data", chunk => body += chunk);
 
         req.on("end", () => {
-            // const newItem = JSON.parse(body);
+           
             items.push(newItem);
             res.end("Item added: " + body);
         });
